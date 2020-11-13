@@ -1,0 +1,69 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div id="details" class="hide">
+    <form>
+        <div class="form-group">
+            <label for="bookname">Book Name: </label>
+            <select class="form-control" id="bookname">
+                <option value="The Java Programming Language">The Java Programming Language</option>
+                <option value="The Art of Unix Programming">The Art of Unix Programming</option>
+                <option value="Close to the Machine">Close to the Machine</option>
+                <option value="The Art of Computer Programming">The Art of Computer Programming</option>
+            </select>
+            <input type="hidden" class="form-control" id="issueid">
+        </div>
+        <div class="form-group">
+            <label for="studentid">Student ID: </label>
+            <input type="number" class="form-control" id="studentid">
+        </div>
+        <div class="form-group">
+            <label for="issuedate">Issue Date: </label>
+            <input type="date" class="form-control" id="issuedate" />
+        </div>
+        <div class="form-group">
+            <label for="issuestatus">Choose Issue Status: </label>
+            <select class="form-control" id="issuestatus">
+                <option value="Issued">Issued</option>
+                <option value="Returned">Returned</option>
+            </select>
+        </div>
+        <button type="button" onclick="saveOrUpdateDetails()"
+                class="btn btn-primary btn-block">
+            Save Book Issue Details
+        </button>
+    </form>
+</div>
+
+<div class="text-center">
+    <h1 class="display-4">All Book Issue History</h1>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead class="bg-success">
+        <tr>
+            <th>Book Name</th>
+            <th>Student ID</th>
+            <th>Issue Status</th>
+            <th>Issue Date</th>
+            <th colspan="2" align="center">Operations</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        <tr>
+            <td colspan="6" align="center">No Book Issue Details</td>
+        </tr>
+    </tbody>
+</table>
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            loadTableData();
+        });
+    </script>
+}
